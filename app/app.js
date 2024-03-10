@@ -74,12 +74,25 @@ function cadastrarDespesa() {
 
     if (despesa.validarDados()) {
        bd.gravar(despesa) 
-       // dialog de sucesso
-        $('#sucessoGravacao').modal('show')
+       
+       document.getElementById('modal-titulo').innerHTML = 'Registro inserido com sucesso'
+       document.getElementById('modal-titulo-div').className = 'modal-header text-success'
+       document.getElementById('modal-conteudo').innerHTML = 'Despesa foi cadastrada com sucesso!'
+       document.getElementById('modal-botao').innerHTML = 'Voltar'
+       document.getElementById('modal-botao').className = 'btn btn-success'
+
+        // dialog de sucesso
+        $('#modalRegistraDespesa').modal('show')
     } else {
+        
+        document.getElementById('modal-titulo').innerHTML = 'Erro na gravação'
+        document.getElementById('modal-titulo-div').className = 'modal-header text-danger'
+        document.getElementById('modal-conteudo').innerHTML = 'Erro na gravação, verifique se todos os campos foram preenchidos corretamente!'
+        document.getElementById('modal-botao').innerHTML = 'Voltar e Corrigir'
+        document.getElementById('modal-botao').className = 'btn btn-danger'
+        
         // dialog de erro
-        $('#erroGravacao').modal('show')
+        $('#modalRegistraDespesa').modal('show')
     }
     
-
 }
